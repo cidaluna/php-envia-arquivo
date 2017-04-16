@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Formulario HTML | Click Luna</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="js/bootstrap.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="Formulario HTML | Click Luna, Aparecida Luna, formulario." />
+<!-- start referente ao calendário datepicker -->
+	<link type="text/css" href="css/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.20.custom.min.js"></script>
+<!-- end referente ao calendário datepicker -->
+<script type="text/javascript" language="javascript">
+$(document).ready(function(){
+		$(".data").datepicker({
+			numberOfMonths: 1,
+                        minDate: new Date(),
+			dateFormat: 'dd/mm/yy',
+			dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+			dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+			dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+			monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+			monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+			nextText: 'Próximo',
+			prevText: 'Anterior'
+		});
+	});
+</script> 
+<script type="text/javascript" language="javascript">
+function validar(){
+ if((document.getElementById("fname").value == "")||(document.getElementById("fname").value.length < 3)){
+  window.alert("Preencha o campo Nome corretamente");
+  document.getElementById("fname").focus();
+  return false;
+  }
+  var filter = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	if(!filter.test(document.getElementById("femail").value)){
+	alert('Por favor, digite o email corretamente');
+	document.getElementById("femail").focus();
+	return false
+	}
+	 if((document.getElementById("fcel").value == "")||(document.getElementById("fcel").value.length < 3)){
+  window.alert("Preencha o campo celular corretamente ( Ex.: 11-98888-9999 ), tente novamente! ");
+  document.getElementById("fcel").focus();
+  return false;
+  }
+ if((document.getElementById("fescolaridade").value == "")||(document.getElementById("fescolaridade").value == "Selecionar")){
+  window.alert("Por favor, informe sua escolaridade.");
+  document.getElementById("fescolaridade").focus();
+  return false;
+  }
+   if((document.getElementById("fcidade").value == "")||(document.getElementById("fcidade").value.length < 3)){
+  window.alert("Preencha o campo Cidade corretamente");
+  document.getElementById("fcidade").focus();
+  return false;
+  }
+   if((document.getElementById("festado").value == "")||(document.getElementById("festado").value == "Selecionar")){
+  window.alert("Por favor, selecione o Estado.");
+  document.getElementById("festado").focus();
+  return false;
+  }
+  if(document.getElementById("fpdf").value == ""){
+  window.alert("Por favor, carregue seu arquivo, em formato .PDF ");
+  return false;
+  }
+  return true;
+}
+</script>
+</head>
+<body>
+	<div class="first">
+		<h1 class="header-title">Formulário HTML </h1>
+	</div>
+	<div class="second"> 
+		<h2 class="title-second">HTML e Bootstrap - Modelo 01  </h2>
+		<div class="container">
+		<div class="row">
+			<form id="formreservas" class="col-xs-12 col-md-12" action="abc.php" method="POST" enctype="multipart/form-data">
+			<span style="display:none;visibility:hidden;"><label for="email">Ignore este campo de texto. Ele está aqui para detectar spammers.Se você entrar qualquer valor neste campo, sua mensagem não será enviada.</label><input type="text" id="email" name="email" size="1" value="" /></span>
+					<div class="form-group row">
+						<label for="fname" class="col-sm-3 col-form-label">Nome: </label>
+						<div class="col-sm-9">
+						<input type="text" class="form-control" title="Nome" placeholder="Nome Completo" name="camponome" id="fname" value="" required />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="femail" class="col-sm-3 col-form-label">Email: </label>
+						<div class="col-sm-9">
+						<input type="text" class="form-control" title="Ex.: nome@dominio.com.br" name="campoemail" id="femail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Ex.: nome@dominio.com.br"  value="" required />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="fsexo" class="radio col-sm-3 col-form-label">Sexo: </label>
+						<div class="col-sm-3">
+						<input type="radio" id="fsexo" name="camposexo" checked> Masculino  &ensp;
+						<input type="radio" id="fsexo" name="camposexo"> Feminino 
+						</div>
+					
+						<label for="fcel" class="col-sm-2 col-form-label">Celular: </label>
+						<div class="col-sm-4">
+						<input type="tel" class="form-control" title="Ex.: 11-98888-9999 Insira o DDD e os traços" id="fcel" name="campocelular" placeholder="Ex.: 11-98888-8888 (Insira com os traços) "  pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}" value="" required />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="fescolaridade" class="col-sm-4 col-form-label">Escolaridade: </label>
+						<div class="col-sm-8">
+							<select id="fescolaridade" class="form-control" name="campoescolaridade">
+							<option value="Selecionar" selected="selected">Selecionar</option>
+							<option value="Ensino-Fundamental-Incompleto">Ensino Fundamental Incompleto</option>
+							<option value="Ensino-Fundamental-Completo">Ensino Fundamental Completo</option>
+							<option value="Ensino-Medio-Incompleto">Ensino M&eacute;dio Incompleto</option>
+							<option value="Ensino-Medio-Completo">Ensino M&eacute;dio Completo</option>
+							<option value="Graduacao-Incompleta">Gradua&ccedil;&atilde;o Incompleta</option>
+							<option value="Graduacao-Completa">Gradua&ccedil;&atilde;o Completa</option>
+							<option value="Especialização">Especializa&ccedil;&atilde;o</option>
+							<option value="Mestrado">Mestrado</option>
+							<option value="Doutorado">Doutorado</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="fcidade" class="col-sm-3 col-form-label">Cidade: </label>
+						<div class="col-sm-5">
+						<input type="text" class="form-control" title="Cidade" placeholder="Cidade" name="campocidade" id="fcidade" value="" required />
+						</div>
+						
+						<label for="festado" class="col-sm-1 col-form-label">Estado: </label>
+						<div class="col-sm-3">
+							<select id="festado" class="form-control" name="campoestado">
+							<option value="Selecionar" selected="selected">Selecionar</option>
+							<optgroup label="Região Norte">
+								<option value="AC">Acre</option>
+								<option value="AM">Amazonas</option>
+								<option value="AP">Amapá</option>
+								<option value="PA">Pará</option>
+								<option value="TO">Tocantins</option>
+								<option value="RR">Roraima</option>
+								<option value="RO">Rondonia</option>
+							</optgroup>
+							<optgroup label="Região Nordeste">
+								<option value="MA">Maranhão</option>
+								<option value="PI">Piauí</option>
+								<option value="CE">Ceará</option>
+								<option value="RN">Rio Grande do Norte</option>
+								<option value="PB">Paraíba</option>
+								<option value="PE">Pernambuco</option>
+								<option value="AL">Alagoas</option>
+								<option value="SE">Sergipe</option>
+								<option value="BA">Bahia</option>
+							</optgroup>
+							<optgroup label="Região Centro-Oeste">
+								<option value="MT">Mato Grosso</option>
+								<option value="GO">Goiás</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="MS">Mato Grosso do Sul</option>
+							</optgroup>
+							<optgroup label="Região Sudeste">
+								<option value="MG">Minas Gerais</option>
+								<option value="ES">Espírito Santo</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="SP">São Paulo</option>
+							</optgroup>
+							<optgroup label="Região Sul">
+								<option value="PR">Paraná</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="RS">Rio Grande do Sul</option>
+							</optgroup>
+							</select>
+						</div>
+						
+					</div>
+				
+					<div class="form-group row">
+						<label for="fchegada" class="col-sm-3 col-form-label">Data chegada:</label>
+						<div class="col-sm-5">
+							<input type="text" class="data" id="fchegada" name="campochegada" value="" required style="color:#464646;" />
+						</div>
+					</div>
+					<div class="form-group row">
+							<label for="fsaida" class="col-sm-3 col-form-label">Data de sa&iacute;da:</label>
+						<div class="col-sm-5">
+							<input type="text" class="data" id="fsaida" name="camposaida" value="" required style="color:#464646;" />
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="fobs" class="col-sm-3 col-form-label">Observações: </label>
+						<div class="col-sm-9">
+						<textarea id="fobs" name="campoobservacoes" placeholder="Campo observações não obrigatório..." class="form-control" rows="5"></textarea>	
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="fpdf" class="col-sm-3 custom-file-input">Carregar PDF (Formato PDF e Tamanho Máx: 1MB): </label>
+						<div class="col-sm-9">
+							<input type="file" name="arquivo" id="fpdf" accept=".pdf" required="required" title="Arquivo em formato .PDF" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="offset-sm-12 col-sm-12">
+						<button type="submit" class="btn btn-primary" onclick="validar(this)" style="float: right;">ENVIAR</button>
+						</div>
+					</div>
+				
+			
+			</form>
+		</div>
+		</div>
+	</div>
+	<section class="prefooter">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-12 txtprefooter">
+			<h4>Formulário básico em HTML e Bootstrap, para ajudar a elaborar páginas de contato para clientes.<br />
+Possui campos do tipo: text, radio, select, option, date, calendar, file, etc.
+Criado por Aparecida de Luna Gonçalves.</h4>
+			</div>
+		</div>
+	</div>
+	</section>
+	<footer class="col-xs-12 col-md-12">
+		<p>&copy; <a href="http://www.clickluna.com.br" target="_blank">Click Luna</a></p>
+	</footer>
+	
+</body>
+</html>
